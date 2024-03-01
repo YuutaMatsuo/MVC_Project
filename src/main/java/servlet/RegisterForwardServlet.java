@@ -2,6 +2,7 @@ package servlet;
 
 import java.io.IOException;
 
+import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
@@ -17,6 +18,11 @@ public class RegisterForwardServlet extends HttpServlet {
 	}
 
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-
+		// ①フォワードを行う準備として「RequestDispatcher」インスタンスを生成する
+		// ※どこへ転送するのか指定する
+		RequestDispatcher dispatcher =
+				request.getRequestDispatcher("/WEB-INF/jsp/registerForward.jsp");
+		// ②ここから実際に転送する
+		dispatcher.forward(request, response);
 	}
 }
